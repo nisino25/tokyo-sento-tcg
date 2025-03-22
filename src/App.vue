@@ -37,7 +37,7 @@
     <div v-if="groupedBlocks[currentBlock]" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
         v-for="sento in filteredSentos"
-        :key="sento.name"
+        :key="sento.name + '-' + sento.location + '-' + sento.access "
         class="bg-white rounded shadow p-4"
       >
         <img
@@ -45,11 +45,8 @@
           alt="thumbnail"
           class="rounded w-full h-40 object-cover mb-4"
         />
-        <h2 class="text-xl font-semibold">{{ sento.name }}</h2>
-        <p class="text-sm text-gray-500 mb-2">
-          {{ sento.furigana }} - {{ sento.location }}
-        </p>
-        <p class="text-sm mb-2">{{ sento.summary }}</p>
+        <h2 class="text-xl font-semibold mb-2">{{ sento.name }} [{{ sento.location }}]</h2>
+        <!-- <p class="text-sm mb-2">{{ sento.summary }}</p> -->
         <p class="text-sm">
           <i class="fas fa-map-marker-alt"></i> {{ sento.access }}
         </p>
@@ -59,7 +56,7 @@
         <p class="text-sm">
           <i class="fas fa-calendar-minus"></i> {{ sento.holiday }}
         </p>
-        <div class="mt-2 flex flex-wrap gap-1">
+        <!-- <div class="mt-2 flex flex-wrap gap-1">
           <span
             v-for="tag in sento.tags"
             :key="tag"
@@ -67,7 +64,7 @@
           >
             {{ tag }}
           </span>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
