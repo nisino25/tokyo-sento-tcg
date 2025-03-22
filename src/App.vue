@@ -34,28 +34,30 @@
       </button>
     </div>
 
-    <div v-if="groupedBlocks[currentBlock]" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div v-if="groupedBlocks[currentBlock]" class="grid grid-cols-2 gap-3 gap-y-6 lg:grid-cols-3 lg:gap-6">
       <div
         v-for="sento in filteredSentos"
         :key="sento.name + '-' + sento.location + '-' + sento.access "
-        class="bg-white rounded shadow p-4"
+        class="bg-white rounded shadow"
       >
         <img
           :src="sento.thumbnail"
           alt="thumbnail"
-          class="rounded w-full h-40 object-cover mb-4"
+          class="rounded w-full h-auto object-cover"
         />
-        <h2 class="text-xl font-semibold mb-2">{{ sento.name }} [{{ sento.location }}]</h2>
-        <!-- <p class="text-sm mb-2">{{ sento.summary }}</p> -->
-        <p class="text-sm">
-          <i class="fas fa-map-marker-alt"></i> {{ sento.access }}
-        </p>
-        <p class="text-sm">
-          <i class="fas fa-clock"></i> {{ sento.hours }}
-        </p>
-        <p class="text-sm">
-          <i class="fas fa-calendar-minus"></i> {{ sento.holiday }}
-        </p>
+        <div class="p-3 lg:p-4">
+          <h2 class="text-xl font-semibold mb-2">{{ sento.name }} [{{ sento.location }}]</h2>
+          <!-- <p class="text-sm mb-2">{{ sento.summary }}</p> -->
+          <p class="text-xs mb-2">
+            <i class="fas fa-map-marker-alt"></i> {{ sento.access }}
+          </p>
+          <p class="text-xs mb-2">
+            <i class="fas fa-clock"></i> {{ sento.hours }}
+          </p>
+          <p class="text-xs">
+            <i class="fas fa-calendar-minus"></i> {{ sento.holiday }}
+          </p>
+        </div>
         <!-- <div class="mt-2 flex flex-wrap gap-1">
           <span
             v-for="tag in sento.tags"
