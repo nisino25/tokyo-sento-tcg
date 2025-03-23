@@ -1,6 +1,16 @@
 <template>
   <div class="max-w-6xl mx-auto py-8 px-4">
-    <h1 class="text-3xl font-bold mb-6">東京銭湯リスト</h1>
+    <!-- <h1 class="text-3xl font-bold mb-6">東京銭湯リスト</h1> -->
+    <div class="flex items-center justify-between mb-6">
+      <button @click="currentTab = 'list'" class="text-2xl">
+        <i class="fas fa-list"></i>
+      </button>
+      <h1 class="text-3xl font-bold text-center">東京銭湯リスト</h1>
+      <button @click="currentTab = 'myList'" class="text-2xl">
+        <i class="fas fa-user"></i>
+      </button>
+    </div>
+
 
     <div class="mb-4">
       <button
@@ -38,15 +48,15 @@
       <div
         v-for="sento in filteredSentos"
         :key="sento.name + '-' + sento.location + '-' + sento.access "
-        class="bg-white rounded shadow"
+        class="bg-white rounded shadow overflow-hidden"
       >
         <img
           :src="sento.thumbnail"
           alt="thumbnail"
-          class="rounded w-full h-auto object-cover"
+          class="w-full h-auto object-cover"
         />
         <div class="p-3 lg:p-4">
-          <h2 class="text-xl font-semibold mb-2">{{ sento.name }} [{{ sento.location }}]</h2>
+          <h2 class="text-l font-semibold mb-2">{{ sento.name }} [{{ sento.location }}]</h2>
           <!-- <p class="text-sm mb-2">{{ sento.summary }}</p> -->
           <p class="text-xs mb-2">
             <i class="fas fa-map-marker-alt"></i> {{ sento.access }}
@@ -80,6 +90,7 @@ const data = ref([])
 const groupedBlocks = ref({})
 const currentBlock = ref('中央ブロック')
 const currentArea = ref('')
+const currentTab = ref('list')
 
 const blocks = [
   {
@@ -159,7 +170,3 @@ onMounted(() => {
   groupByBlock()
 })
 </script>
-
-<style scoped>
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
-</style>
