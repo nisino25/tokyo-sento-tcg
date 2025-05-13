@@ -63,6 +63,10 @@
           />
           <div class="p-3 lg:p-4">
             <h2 class="text-center text-l font-semibold">{{ sento.name }} [{{ sento.location }}]</h2>
+            <div class="justify-center gap-3 flex mt-3">
+              <i v-if="checkIcon(sento,'サウナ')" class="fa-solid fa-fire-flame-curved text-red-500"></i>
+              <i v-if="checkIcon(sento,'水風呂')" class="fa-solid fa-droplet text-blue text-blue-500"></i>
+            </div>
             <div class="absolute left-1/2 bottom-[10px] transform -translate-x-1/2 w-[80%] mt-4 flex justify-between text-gray-600 text-xl">
                 <!-- Link Icon -->
                 <a :href="sento.href" target="_blank" rel="noopener noreferrer">
@@ -227,6 +231,12 @@ const toggleFavorite = (sento) => {
 
     // Save to localStorage every time
     localStorage.setItem('myFavoriteList', JSON.stringify(myFavoriteList.value))
+}
+
+const checkIcon = (sento,property) => {
+  if(sento.tags){
+    return sento.tags.includes(property)
+  }
 }
 
 
